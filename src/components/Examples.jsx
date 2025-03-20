@@ -2,6 +2,7 @@ import TabButton from './TabButton'
 import { useState } from 'react'
 import { EXAMPLES } from '../data'
 import Section from './Section'
+import Tabs from './Tabs'
 
 export default function Examples() {
   const [selectedTopic, setSelectedTopic] = useState('')
@@ -25,33 +26,39 @@ export default function Examples() {
   }
   return (
     <Section title="Examples" id="examples">
-      <menu>
-        <TabButton
-          isSelected={selectedTopic === 'components'}
-          onClick={() => handleTabSelect('components')}
-        >
-          Components
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'jsx'}
-          onClick={() => handleTabSelect('jsx')}
-        >
-          JSX
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'props'}
-          onClick={() => handleTabSelect('props')}
-        >
-          Props
-        </TabButton>
-        <TabButton
-          isSelected={selectedTopic === 'state'}
-          onClick={() => handleTabSelect('state')}
-        >
-          State
-        </TabButton>
-      </menu>
-      {tabContent}
+      <Tabs
+        ButtonsContainer="menu"
+        buttons={
+          <>
+            <TabButton
+              isSelected={selectedTopic === 'components'}
+              onClick={() => handleTabSelect('components')}
+            >
+              Components
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'jsx'}
+              onClick={() => handleTabSelect('jsx')}
+            >
+              JSX
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'props'}
+              onClick={() => handleTabSelect('props')}
+            >
+              Props
+            </TabButton>
+            <TabButton
+              isSelected={selectedTopic === 'state'}
+              onClick={() => handleTabSelect('state')}
+            >
+              State
+            </TabButton>
+          </>
+        }
+      >
+        {tabContent}
+      </Tabs>
     </Section>
   )
 }
